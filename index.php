@@ -51,10 +51,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   </div>
 
 </nav>
-<iframe  style="display: inline-block"width="100%" height="100%"  name="con" src="./MainPage/mapDisplay.php" frameborder="0">
-	
-	</iframe>
-	
+<!--<iframe src="./MainPage/mapDisplay.php" style="border: 1px solid black ;  width: 100%;height: 1000px;" name="con" frameborder="0"></iframe>-->
+<iframe  style="display: inline-block; border: 1px solid black ;margin-top: 0px; padding-left: 20%; padding-right: 20%; width: 130%;height: 1000px;"  name="con" src="./MainPage/mapDisplay.php" frameborder="0">
+<!--	-->
+<!--	</iframe>-->
+<!--	-->
 	
 
 <!-- Top menu on small screens -->
