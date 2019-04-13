@@ -21,7 +21,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
 	  <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
-      Map <i class="fa fa-caret-down"></i>
+      Main <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
       
@@ -31,16 +31,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       <a href="#" class="w3-bar-item w3-button"target="con">Mathematic</a>
     </div>
     <a href="./callAPI/ARIMA.html" class="w3-bar-item w3-button" target="con">Get Data</a>
-
-      <a href="#" class="w3-bar-item w3-button" onClick="show3()">Chart<i class="fa fa-caret-down"></i></a>
-      <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-          <a href="./chart/chart.php" class="w3-bar-item w3-button" target="con">Random Forest</a>
-          <a href="./TestPlan/ARIMAMain.html" class="w3-bar-item w3-button" target="con">Time Series(ARIMA)</a>
-          <a href="./TestPlan/MLP.html" class="w3-bar-item w3-button" target="con">Multiple Linear Regression</a>
-      </div>
-
-
-
+    
+    <a href="./chart/chart.php" target="con" class="w3-bar-item w3-button">Chart</a>
     <a href="#" class="w3-bar-item w3-button" onClick="show3()">Test Plan<i class="fa fa-caret-down"></i></a>
 	  <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium">
       <a href="./TestPlan/MLP.html" class="w3-bar-item w3-button" target="con">Random Forest</a>
@@ -48,18 +40,13 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       <a href="./TestPlan/MLP.html" class="w3-bar-item w3-button" target="con">Multiple Linear Regression</a>
     </div>
 	  
-    <a href="#" class="w3-bar-item w3-button" onClick="show2()" >Explanation<i class="fa fa-caret-down"></i></a>
+    <a href="#" class="w3-bar-item w3-button" onClick="show2()" >Explaination<i class="fa fa-caret-down"></i></a>
 	<div id="demoAcc2" class="w3-bar-block w3-hide w3-padding-large w3-medium">
       <a href="./Explaination/rf.html" class="w3-bar-item w3-button" target="con">Random Forest</a>
       <a href="./Explaination/ARIMA.html" class="w3-bar-item w3-button" target="con">Time Series(ARIMA)</a>
       <a href="./Explaination/math.html" class="w3-bar-item w3-button" target="con">Mathematic</a>
     </div>
-    <a href="#" class="w3-bar-item w3-button" onClick="show4()">Past Data<i class="fa fa-caret-down"></i></a>
-      <div id="demoAcc4" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-          <a href="https://www.hko.gov.hk/m/menu_uc.htm?" class="w3-bar-item w3-button" target="con">weather</a>
-          <a href="https://www.epd.gov.hk/epd/tc_chi/environmentinhk/air/data/air_data.html" class="w3-bar-item w3-button" target="con">Pollutant Concentration</a>
-
-      </div>
+    <a href="#" class="w3-bar-item w3-button">Past Data</a>
     <a href="./getAQHI/byGPS.html" target="con" class="w3-bar-item w3-button">Get AQHI</a>
   </div>
 
@@ -128,14 +115,6 @@ function show3() {
   } else {
     x.className = x.className.replace(" w3-show", "");
   }
-}
-function show4() {
-    var x = document.getElementById("demoAcc4");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-    }
 }
 // Click on the "Jeans" link on page load to open the accordion for demo purposes
 document.getElementById("myBtn").click();

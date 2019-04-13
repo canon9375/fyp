@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        function cal(x1,y1,x2,y2) {
+            var s= (y2-y1)/(x2-x1);
+            return s;
+        }
+
+        function y_intercept(x1,y1,slope) {
+            // # y = mx + b
+            // # b = y - mx
+            // # b = P1[1] - slope * P1[0]
+            var  y=y1-slope*x1;
+            return y;
+        }
+
+        function slope(x1,y1,x2,y2) {
+            var s=(y2-y1)/(x2-x1);
+            return s;
+
+        }
+
+
+        function nearestPoint(x1,y1,x2,y2) {
+            var  slope1= (y2-y1)/(x2-x1);
+            var  slope =Math.pow(-1,1) / slope1;
+            return slope;
+        }
+
+        function line_intersect(m1,b1,m2,b2) {
+            if (m1==m2){
+                return none;
+            }
+            x=(b2-b1)/(m1-m2);
+            y=m1*x+b1;
+            var r=[x,y];
+            return r;
+        }
+
+        function distance(x1,y1,x2,y2) {
+            var x= Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2));
+            // console.log(x);
+            return x;
+        }
+
+        function ratio(d1,d2) {
+            var d = d1/(d1+d2);
+            return d;
+        }
+
+        function aqhiOfPoint(aqhi1,aqhi2,distanceRatio) {
+
+
+            var aqhi=(aqhi2 * distanceRatio) + (aqhi1*(1-distanceRatio));
+
+            return aqhi;
+        }
+
+        function getcurrentAQHI() {
+            var result=[4,4,5];
+            return result;
+        }
+
+
+        function findOutAQHI(x1,y1) {
+            var locaList = [['causewaybay', 22.2801379, 114.1829043],
+                ['central', 22.2818189, 114.1559413],
+                ['central/western', 22.317831, 114.194941],
+                ['eastern', 22.2477915, 114.1496074],
+                ['kwaichung', 22.3283503, 114.0142057],
+                ['kwuntong', 22.3133199, 114.2226423],
+                ['mongkok', 22.3226159, 114.1660853],
+                ['shamshuipo', 22.3302309, 114.1569233]
+                , ['shatin', 22.3762849, 114.1823453],
+                ['taipo', 22.4509649, 114.1623843]
+                , ['tapmun', 22.4713209, 114.3585323]
+                , ['tseungkwano', 22.3261644, 114.1147959]
+                , ['tsuenwan', 22.3260131, 114.114796],
+                ['tuenmun', 22.4181877, 113.9821814]
+                , ['tungchung', 22.2888939, 113.9414723],
+                ['yuenlong', 22.4451599, 114.0204623]];
+            var d = 100;
+            var aqhi = [];
+            for (var x = 0; x < locaList.length; x++) {
+                for (var y = 0; y < locaList.length; y++) {
+                    if (x == y)
+                        continue;
+                    else {
+
+                        var slope_A = slope((locaList[x][1]), (locaList[x][2]), (locaList[y][1]), (locaList[y][2]));
+                        var slope_B = nearestPoint((locaList[x][1]), (locaList[x][2]), (locaList[y][1]), (locaList[y][2]));
+                        var y_int_A = y_intercept((locaList[x][1]), (locaList[x][2]), slope_A);
+                        var y_int_B = y_intercept(x1, y1, slope_B);
+                        var p2 = line_intersect(slope_A, y_int_A, slope_B, y_int_B);
+
+                        var distance1 = distance((locaList[x][1]), (locaList[x][2]), p2[0], p2[1]);
+                        var distance2 = distance((locaList[y][1]), (locaList[y][2]), p2[0], p2[1]);
+
+                        if (d > (distance1 + distance2)) {
+
+                            var distance1Ratio = ratio(distance1, distance2);
+                            var locationOne = getcurrentAQHI(locaList[x][0]);
+                            var locationTwo = getcurrentAQHI(locaList[y][0]);
+                            // console.log('dis'+locationTwo);
+                            for (var count = 0; count < 3; count++) {
+                                yy = aqhiOfPoint(locationOne[count], locationTwo[count], distance1Ratio);
+                                // console.log(yy);
+                                aqhi[count]=yy;
+
+
+
+
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+            return aqhi;
+        }
+
+
+        function test2() {
+
+        }
+
+        function test() {
+            var  x= findOutAQHI(4,4);
+            console.log(x);
+        }
+
+
+    </script>
+
+    <!--for log and lan-->
+    <script>
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            var info="";
+            var x = document.getElementById("demo");
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+            var ge= findOutAQHI(position.coords.latitude,position.coords.longitude);
+            console.log(typeof ge.toString());
+            var res = ge.toString().split(",");
+            var color=["orange","orange","orange"];
+            for (var i=0; i<3;i++){
+                if (res[i]<4){
+                    color[i]="green";
+                }
+                else if (res[i]=7){
+                    color[i]="red";
+                }
+                else  if (res[i]>=8 && res[i] <= 10){
+                    color[i]="brown";
+                }
+                else if(res[i]>=11){
+                    color[i]="black";
+                }
+
+
+            }
+
+            info += "<p style=\"color: "+color[0]+";\">"+ "One Hour Later :" + res[0]+"</p>";
+            info +="<p style=\"color: "+color[1]+";\">"+ "Two Hour Later :" + res[1]+"</p>";
+            info +="<p style=\"color: "+color[2]+";\">"+ "Three Hour Later :" + res[2]+"</p>";
+
+            x.innerHTML = info;
+
+
+        }
+
+
+    </script>
+    <script>
+        var geocoder;
+        var map;
+        var x;
+
+        function codeAddress() {
+            var result;
+            geocoder = new google.maps.Geocoder();
+            console.log(geocoder);
+
+            var address = document.getElementById('address').value;
+            geocoder.geocode( { 'address': address}, function(results, status) {
+                if (status == 'OK') {
+
+                    result = results[0].geometry.location.toString();
+
+                    var res = result.split(",");
+
+                    var lan=res[0].substring(1,res[0].length);
+                    var lon=res[1].substring(1,res[0].length);
+
+                    //return  AQHI
+                    var aqhi= findOutAQHI(lan,lon);
+                    alert(aqhi);
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+
+
+        }
+
+
+    </script>
+
+    <!--for log and lan-->
+    <script>
+        var x = document.getElementById("demo");
+        //
+        // function getLocation() {
+        //     if (navigator.geolocation) {
+        //         navigator.geolocation.getCurrentPosition(showPosition);
+        //     } else {
+        //         x.innerHTML = "Geolocation is not supported by this browser.";
+        //     }
+        // }
+        //
+        // function showPosition(position) {
+        //     var x = document.getElementById("demo");
+        //     x.innerHTML = "Latitude: " + position.coords.latitude +
+        //         "<br>Longitude: " + position.coords.longitude;
+        //     var ge= findOutAQHI(position.coords.latitude,position.coords.longitude);
+        //     var res = ge.split(",");
+        //
+        //
+        //     //return  AQHI
+        //     var res = result.split(",");
+        //
+        //     // var lan=res[0].substring(1,res[0].length);
+        //     // var lon=res[1].substring(1,res[0].length);
+        //     //
+        //     //
+        //     alert(res);
+        //     x.innerHTML = ge[0];
+        //     alert(ge);
+        //
+        // }
+
+
+    </script>
+</head>
+<body>
+<input type="text" id="address">
+<input type="button"  value="try" onclick="codeAddress()">
+<p id="demo">dsf</p>
+<input type="button" value="try"  onclick="getLocation()">
+
+</body>
+</html>

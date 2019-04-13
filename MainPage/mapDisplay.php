@@ -20,6 +20,8 @@
     </style>
   </head>
   <body>
+  <br><br><br><br><br><br><br>
+	  <div w3-include-html="../index2.php"></div>
 	  <canvas id="myCanvas" width="20" height="17" style="display:none">
 </canvas>
     <div id="map"></div>

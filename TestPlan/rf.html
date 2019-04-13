@@ -327,9 +327,10 @@ $("#test").click(function () {
 
 
 </head>
-<body onload="currentSlide(1)">
-<div id="whole">
+<body style="width: 70%" onload="currentSlide(1)">
 <center>
+<div id="whole">
+
 
 
 
@@ -415,19 +416,29 @@ $("#test").click(function () {
 
     <div class="withBGC">
         <hr>
-        <h2 style="font-size: 40px;color: #ff25f1"><i>Find the <span style="color: #fc97ff"> variable</span> used in MLR</i> </h2>
+        <h2 style="font-size: 40px;color: #ff25f1"><i>Find the <span style="color: #fc97ff"> best accuracy</span> by past time</i> </h2>
 
         <ol>
-            <li>use aqhi to predict aqhi is most accurate</li>
-            <li>Also can explain by the correlation</li>
+            <li>The accuracy almost nearly 94% </li>
+            <li>Accuracy decrease after T-7</li>
         </ol>
 
 
         <table>
             <tr>
                 <td>
-                    <a target="_blank" href="../photo/TestCase/MLRParameter.png" style="width: 100px">
-                        <img src="../photo/TestCase/MLRParameter.png" alt="" >
+                    <a target="_blank" href="../photo/TestCase/rf_Past1.png" style="width: 100px">
+                        <img src="../photo/TestCase/rf_Past1.png" alt="" >
+                    </a>
+                </td>
+				 <td>
+                    <a target="_blank" href="../photo/TestCase/rf_Past2.png" style="width: 100px">
+                        <img src="../photo/TestCase/rf_Past2.png" alt="" >
+                    </a>
+                </td>
+				 <td>
+                    <a target="_blank" href="../photo/TestCase/rf_Past3.png" style="width: 100px">
+                        <img src="../photo/TestCase/rf_Past3.png" alt="" >
                     </a>
                 </td>
                 <td id="testTWO">
@@ -451,52 +462,7 @@ $("#test").click(function () {
 
 
 
-<!--method 2-->
-    <div class="withoutBGC">
-       <h2>running python</h2>
 
-        <div class="slideshow-container">
-
-            <div class="mySlides fade">
-                <div class="numbertext">1 / 3</div>
-                <br><br>
-                <a target="_blank" href="../photo/TestCase/dpVDip.png" style="width: 150px">
-                    <img src="../photo/TestCase/dpVDip.png" alt="" >
-                </a>
-
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">2 / 3</div>
-                <br><br>
-                <a target="_blank" href="../photo/TestCase/idVSDP.png" style="width: 150px">
-                    <img src="../photo/TestCase/idVSDP.png" alt="" >
-                </a>
-
-
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">3 / 3</div>
-                <br><br>
-                <a target="_blank" href="../photo/TestCase/idVSDP.png" style="width: 150px">
-                    <img src="../photo/TestCase/idVSDP.png" alt="" >
-                </a>
-            </div>
-
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-        </div>
-        <br>
-
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-        </div>
-
-    </div>
 
 </center>
 </div>
