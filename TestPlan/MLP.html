@@ -325,6 +325,55 @@ $("#test").click(function () {
 
     </script>
 
+    <style>
+
+        /* Style the list */
+        ul.breadcrumb {
+            list-style: none;
+            background-color: #eee;
+            height: 70px;
+            margin-bottom: 0px;
+            top: 0px;
+
+        }
+
+
+
+        /* Display list items side by side */
+        ul.breadcrumb li {
+            color: white;
+            display: inline;
+            font-size: 25px;
+
+        }
+
+        /* Add a slash symbol (/) before/behind each list item */
+        ul.breadcrumb li+li:before {
+
+            color: black;
+            content: "/\00a0";
+        }
+
+        /* Add a color to all links inside the list */
+        ul.breadcrumb li a {
+            color: #0275d8;
+            text-decoration: none;
+        }
+
+        /* Add a color on mouse-over */
+        /*ul.breadcrumb li a:hover {*/
+        /*color: #01447e;*/
+        /*text-decoration: underline;*/
+        /*}*/
+        /*@media only screen and (max-width: 700px) {*/
+        /*body{*/
+        /*margin-top: 20%;*/
+
+        /*}*/
+
+
+        /*}*/
+    </style>
 
 </head>
 <body  onload="currentSlide(1)">
@@ -336,6 +385,14 @@ $("#test").click(function () {
 <h1 id="head">Multiple Linear Regression <br>
 <a style="font-size: 20px" href="">Learn MLR</a>
 </h1>
+
+    <ul style="margin-top: 0px;" class="breadcrumb">
+        <li><a href="ARIMA.html" target="reason">Central</a></li>
+        <li><a href="ARIMATaiPo.html" target="reason">Tai po</a></li>
+        <li><a href="ARIMAYL.html" target="reason">Yuen Long</a></li>
+
+
+    </ul>
     <!--start of div style 1-->
     <div id="first" class="withBGC">
         <hr>

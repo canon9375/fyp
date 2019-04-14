@@ -7,15 +7,35 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<script ></script>
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+@media only screen and (min-width:  700px) {
+
+
+    #test{
+
+       padding-left: 30%;
+    }
+
+}
+
+@media only screen and (max-width:  500px) {
+
+
+    #test{
+margin-top: 20%;
+    }
+
+}
+
 </style>
 <body class="w3-content" style="max-width:1200px">
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
-  <div class="w3-container w3-display-container w3-padding-16">
+<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width: 250px;" id="mySidebar">
+  <div class="w3-container w3-display-container ">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <h3 class="w3-wide"><b>Air Quality Prediction</b></h3>
   </div>
@@ -24,14 +44,14 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       Main <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      
+
       <a href="./MainPage/mapDisplay.php" class="w3-bar-item w3-button" target="con">Random Forest</a>
       <a href="#" class="w3-bar-item w3-button" target="con">Time Series(ARIMA)</a>
       <a href="#" class="w3-bar-item w3-button"target="con">ANN</a>
       <a href="#" class="w3-bar-item w3-button"target="con">Mathematic</a>
     </div>
     <a href="./callAPI/ARIMA.html" class="w3-bar-item w3-button" target="con">Get Data</a>
-    
+
     <a href="./chart/chart.php" target="con" class="w3-bar-item w3-button">Chart</a>
     <a href="#" class="w3-bar-item w3-button" onClick="show3()">Test Plan<i class="fa fa-caret-down"></i></a>
 	  <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium">
@@ -39,24 +59,27 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       <a href="./TestPlan/ARIMAMain.html" class="w3-bar-item w3-button" target="con">Time Series(ARIMA)</a>
       <a href="./TestPlan/MLP.html" class="w3-bar-item w3-button" target="con">Multiple Linear Regression</a>
     </div>
-	  
+
     <a href="#" class="w3-bar-item w3-button" onClick="show2()" >Explaination<i class="fa fa-caret-down"></i></a>
 	<div id="demoAcc2" class="w3-bar-block w3-hide w3-padding-large w3-medium">
       <a href="./Explaination/rf.html" class="w3-bar-item w3-button" target="con">Random Forest</a>
       <a href="./Explaination/ARIMA.html" class="w3-bar-item w3-button" target="con">Time Series(ARIMA)</a>
       <a href="./Explaination/math.html" class="w3-bar-item w3-button" target="con">Mathematic</a>
     </div>
-    <a href="#" class="w3-bar-item w3-button">Past Data</a>
-    <a href="./getAQHI/byGPS.html" target="con" class="w3-bar-item w3-button">Get AQHI</a>
+    <a href="./PastData/past72Data.php" target="con" class="w3-bar-item w3-button">Past Data</a>
+    <a href="./getAQHI/byGPS.html" class="w3-bar-item w3-button" target="con">Get AQHI</a>
+
+
   </div>
 
 </nav>
+<div class="w3-display-container w3-container">
 <!--<iframe src="./MainPage/mapDisplay.php" style="border: 1px solid black ;  width: 100%;height: 1000px;" name="con" frameborder="0"></iframe>-->
-<iframe  style="display: inline-block; margin-top: 0px; padding-left: 15%; width: 100%;height: 1000px;"  name="con" src="./MainPage/mapDisplay.php" frameborder="0">
+<iframe  class="w3-display-topleft w3-text-white" style="  width: 100%;height: 1000px;" id="test"  name="con" src="./MainPage/mapDisplay.php" frameborder="0">
 <!--	-->
 <!--	</iframe>-->
 <!--	-->
-	
+</div>
 
 <!-- Top menu on small screens -->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
@@ -72,9 +95,10 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
-  
+
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
+
 
 
 <!-- Newsletter Modal -->

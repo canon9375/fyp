@@ -286,25 +286,77 @@
 
 
     </style>
-</head>
-<body style=" background-color:#eaffb7;width: 60%; ">
-<center>
-<div style="height: 300px;">
+    <style>
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
 
-<h1>Use GPS to get AQHI</h1>
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+            padding-top: 8%;
+            padding-bottom: 8%;
+        }
+    </style>
+</head>
+<body style="width: 60%; margin-top: 10%; ">
+<center>
+
+
+
 
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSoruTeCmzsvdNkzwXWw2dgwopdg8tu0c&callback=initMap">
 </script>
-<button class="button button5" onclick="getLocation()">Get AQHI</button>
-<p id="demo"></p>
-</div>
-<div>
-<h1>Use Address  to get AQHI</h1>
-<input type="text" id="address" style="height: 40px;width: 50%; font-size: 30px;" placeholder="enter address..">
-<br>
-<button class="button button5" onclick="codeAddress()">Get AQHI</button>
-</div>
+<h1 style="color: gray"> please select method</h1>
+
+
+    <button class="accordion">Use Address  to get AQHI</button>
+    <div class="panel">
+        <input type="text" id="address" style="height: 40px;width: 70%; font-size: 20px;" placeholder="enter address..">
+        <button class="button button5" onclick="codeAddress()">Get AQHI</button>
+    </div>
+
+    <button class="accordion">Use GPS to get AQHI</button>
+    <div class="panel">
+        <button class="button button5" onclick="getLocation()">Get AQHI</button>
+        <p id="demo"></p>
+    </div>
+
+
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+
 </center>
 </body>
 </html>
