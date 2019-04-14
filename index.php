@@ -31,6 +31,8 @@ margin-top: 20%;
 
 }
 
+
+
 </style>
 <body class="w3-content" style="max-width:1200px">
 
