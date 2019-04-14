@@ -2,14 +2,26 @@
 <?php
 //echo shell_exec('/Users/fei/anaconda3/bin/python --V 2>&1');
 //echo shell_exec('echo $PATH 2>&1');
-$output= shell_exec('/Users/fei/anaconda3/bin/python ./python/my_last16Compare.py 2>&1');
+$output= shell_exec('python ./python/my_last16Compare.py 2>&1');
 $output = json_decode(str_replace("'",'"',$output),true);
 
 ?>
 
 <html>
 
+<style>
+	
+@media only screen and (max-width:  700px) {
 
+
+    #test{
+
+       margin-top: 20%;
+    }
+
+}
+
+	</style>
 <head>
 <meta charset="UTF-8">
 <title>Untitled Document</title>
@@ -62,8 +74,10 @@ function drawCurveTypes() {
 	</script>
 </head>
 <body>
+	<div id="test">
 	<div class="se-pre-con"></div>
   <div id="chart_div1"></div>
 	<div id="t"></div>
+	</div>
 </body>
 </html>
