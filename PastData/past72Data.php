@@ -1,6 +1,6 @@
 <!doctype html>
 <?php
-$path='/Users/fei/anaconda3/bin/python getPast.py';
+$path='python getPast.py';
 //$output = json_decode(str_replace("'",'"',$output),true);
 ?>
 
@@ -73,6 +73,7 @@ function getTable(){
 </script>
 <body>
 <center>
+	<div id="test">
 	<select name="" id="location" onChange ="chTable()">
 		
 	</select>
@@ -104,6 +105,18 @@ function getTable(){
 		Some Information: <a href="https://www.epd.gov.hk/epd/tc_chi/environmentinhk/air/data/air_data.html" target="_blank">Data & Statistics</a>
 	</p>
 	<p>		Some Information: <a href="http://www.hko.gov.hk/cis/climat_c.htm" target="_blank">Climatological Information Services</a></p>
+</div>
 </center>
 </body>
+	<style>
+
+@media only screen and (max-width:  1000px) {
+
+
+    #test{
+margin-top: 20%;
+    }
+
+}
+	</style>
 </html>
