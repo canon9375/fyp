@@ -8,7 +8,7 @@
             text-align: center;
 
             top: 0;
-
+            width: 100%;
             background-color: black;
             color: white;
             margin: 0px;
@@ -51,27 +51,23 @@
             text-decoration: none;
         }
 
-        bodt{
-            overflow: scroll;
-        }
+        /* Add a color on mouse-over */
+        /*ul.breadcrumb li a:hover {*/
+            /*color: #01447e;*/
+            /*text-decoration: underline;*/
+        /*}*/
+        /*@media only screen and (max-width: 700px) {*/
+            /*body{*/
+              /*margin-top: 20%;*/
 
-         Add a color on mouse-over
-        ul.breadcrumb li a:hover {
-            color: #01447e;
-            text-decoration: underline;
-        }
-        @media only screen and (max-width: 700px) {
-            body{
-              margin-top: 20%;
-
-            }
+            /*}*/
 
 
-        }
+        /*}*/
     </style>
 
 </head>
-<body  onload = "currentSlide(1)">
+<body>
 <center>
 <h1 id="head">ARIMA Model <br>
     <a style="font-size: 20px ; color: yellow" href="../Explaination/ARIMA.html">Learn ARIMA</a>
@@ -86,7 +82,7 @@
 </ul>
     <div>
         <iframe name="reason" src="../TestPlan/ARIMA.html"
-                style="  height: 500px; margin-top: 0px;">
+                width="100%" height="500px;" style="border: 0px; margin-top: 0px;">
         </iframe>
     </div>
 
