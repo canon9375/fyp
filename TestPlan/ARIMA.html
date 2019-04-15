@@ -81,10 +81,12 @@
         }
 
         .withBGC{
+            border: 10px solid red;
             height: 700px;
             background-color: rgba(209, 255, 250, 0.89);
         }
         .withoutBGC{
+            border: 10px solid red;
             height: 700px;
         }
 
@@ -301,6 +303,14 @@
             text-decoration: underline;
         }
 
+        #more{
+            width: 50%;
+            padding-left: 0px;
+            margin-left: 0px;
+            height: 110px;
+            overflow: scroll;
+        }
+
     </style>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -372,7 +382,7 @@
     </script>
 
 </head>
-<body  onload="currentSlide(1)">
+<body   onload="currentSlide(1)">
 <center>
 
 <div id="whole" >
@@ -544,9 +554,10 @@
                 <h2 style="font-size: 40px;color: #ff25f1"><i> <span style="color: #fc97ff"> SUMMARY</span> of ARIMA Model</i> </h2>
 
                 <ol>
-                    <li>Equation: y=m1x1+m2x2+m3x3+m4x4+m5x5+m6x6+C
+                    <li id="more" style=" left: 0px; alignment: left;">Equation: y=m1x1+m2x2+m3x3+m4x4+m5x5+m6x6+C
                         <br>
-                        In this example : y=(1.0347)x1+(-0.0195)x2+(-0.1243)x3+(-0.0136)x4+(0.0860)x5+(-0.1475)x6+7.0527
+                        In this example : y=(1.0347)x1+(-0.0195)x2+(-0.1243)x3+ <br>
+                        (-0.0136)x4+(0.0860)x5+(-0.1475)x6+7.0527
 
                     </li>
 

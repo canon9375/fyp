@@ -77,10 +77,10 @@ margin-top: 20%;
 </nav>
 <div class="w3-display-container w3-container">
 <!--<iframe src="./MainPage/mapDisplay.php" style="border: 1px solid black ;  width: 100%;height: 1000px;" name="con" frameborder="0"></iframe>-->
-<iframe  class="w3-display-topleft w3-text-white" style="  width: 100%;height: 1000px;" id="test"  name="con" src="./MainPage/mapDisplay.php" frameborder="0">
+<iframe  class="w3-display-topleft w3-text-white" style=" border: 10px solid black; width: 80%;height: 1000px;" id="test"  name="con" src="./MainPage/mapDisplay.php" frameborder="0">
 <!--	-->
 <!--	</iframe>-->
-<!--	-->
+<!--	-->w
 </div>
 
 <!-- Top menu on small screens -->
