@@ -1,6 +1,7 @@
 <!doctype html>
 <?php
 $path='python getPast.py';
+//$path = '/Users/fei/anaconda3/bin/python getPast.py';
 //$output = json_decode(str_replace("'",'"',$output),true);
 ?>
 
@@ -19,26 +20,23 @@ $path='python getPast.py';
                 'Kwai Chung','Tsuen Wan','Tseung Kwan O','Yuen Long',
                 'Tuen Mun','Tung Chung','Tai Po','Sha Tin',
                 'Tap Mun','Causeway Bay','Central','Mong Kok'];  
+	var t = $('#ta').DataTable();
 $("document").ready(function(){
 		$.each(lc ,function(key,value){
 		$("#location").append(
 			"<option vaule='"+value+"'>"+value+"</option>");
 		});
+		$("#location").change(function(){
+			document.cookie = "lct ="+$("#location").val();
+			t.clear().draw();
+			getTable();
+		});
 	getTable();
- 
-    // Automatically add a first row of data
 });
 function chTable(){
-	document.cookie = "lct ="+$("#location").val();
-var t = $('#ta').DataTable();
-	t.clear().draw();
-alert(<?=json_encode($loca)?>);
-getTable();
+
 }	
 function getTable(){
-
-
-	var t = $('#ta').DataTable();
     var counter = 1;
 	<?php
 	$output;
@@ -46,8 +44,11 @@ function getTable(){
 		$output= shell_exec("$path 'Central/western' 2>&1");
 	else{
 		$loca = $_COOKIE['lct'];
-		$output= shell_exec("/Users/fei/anaconda3/bin/python getPast.py $loca 2>&1"); 
+		$output= shell_exec("$path $loca 2>&1"); 
 		 unset($_COOKIE['lct']);
+		?>alert(<?=json_encode($loca)?>);
+			alert($_COOKIE['lct']);
+		<?php
 	}
 	$output = json_decode(str_replace("'",'"',$output),true);
 	foreach($output as $k1 => $v1){
@@ -74,7 +75,7 @@ function getTable(){
 <body>
 <center>
 	<div id="test">
-	<select name="" id="location" onChange ="chTable()">
+	<select name="location" id="location">
 		
 	</select>
 	
