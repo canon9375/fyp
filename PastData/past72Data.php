@@ -1,8 +1,10 @@
 <!doctype html>
 <?php
-$path='python getPast.py';
-//$path = '/Users/fei/anaconda3/bin/python getPast.py';
-//$output = json_decode(str_replace("'",'"',$output),true);
+include_once("../path.php");
+//include_once("../index.php");
+//include_once("selectData.php");
+//$output= shell_exec("$path 'Central/western' 2>&1");
+
 ?>
 
 <html>
@@ -20,65 +22,68 @@ $path='python getPast.py';
                 'Kwai Chung','Tsuen Wan','Tseung Kwan O','Yuen Long',
                 'Tuen Mun','Tung Chung','Tai Po','Sha Tin',
                 'Tap Mun','Causeway Bay','Central','Mong Kok'];  
-	var t = $('#ta').DataTable();
+	var t;
 $("document").ready(function(){
+	$(document).ajaxStart(function(){
+    	$("#wait").css("display", "block");
+		$("#test").css("display", "none");
+  	});
+  	$(document).ajaxComplete(function(){
+		$("#wait").css("display", "none");
+		$("#test").css("display", "block");
+  	});
+		t =  $('#ta').DataTable();
 		$.each(lc ,function(key,value){
 		$("#location").append(
 			"<option vaule='"+value+"'>"+value+"</option>");
 		});
-		$("#location").change(function(){
-			document.cookie = "lct ="+$("#location").val();
+		$("#loBtn").click(function(){
 			t.clear().draw();
-			getTable();
+			selLoc = $("[id=location]").val();
+			callAjax({loc:selLoc});
 		});
-	getTable();
+   
+callAjax({});
 });
-function chTable(){
-
-}	
-function getTable(){
-    var counter = 1;
-	<?php
-	$output;
-	if (!isset($_COOKIE["lct"]))
-		$output= shell_exec("$path 'Central/western' 2>&1");
-	else{
-		$loca = $_COOKIE['lct'];
-		$output= shell_exec("$path $loca 2>&1"); 
-		 unset($_COOKIE['lct']);
-		?>alert(<?=json_encode($loca)?>);
-			alert($_COOKIE['lct']);
-		<?php
-	}
-	$output = json_decode(str_replace("'",'"',$output),true);
-	foreach($output as $k1 => $v1){
-	?>
-			t.row.add( [
-				counter ,
-				<?=json_encode($k1)?>,
-				<?=json_encode($v1[0])?>,
-				<?=json_encode($v1[1])?>,
-				<?=json_encode($v1[2])?>,
-				<?=json_encode($v1[3])?>,
-				<?=json_encode($v1[4])?>,
-				<?=json_encode($v1[5])?>,
-				<?=json_encode($v1[6])?>,
-        	]).draw( false );
- 			counter++;
-	<?php		
-	} ?>
-
-	
+function callAjax(sdData){
+	$.ajax({
+       type: 'POST',
+       url: 'selectData.php',
+		data: sdData, 
+		contentType: "application/x-www-form-urlencoded;charset=utf-8",
+       dataType: 'json',
+		success: function(data,status, XMLHttpRequest)
+       {
+				data = JSON.parse(data);
+				var counter =1;
+				$.each(data,function(k,v){   
+					t.row.add( [
+						counter ,
+						k,v[0],v[1],v[2],v[3],
+						v[4],v[5],v[6]
+					]).draw( false );
+ 					counter++;	
+				});	
+			
+	   },
+          error:function(err){
+			 console.log(err);
+          }
+				
+	   });	
 }
-	
+
+
 </script>
 <body>
+<?php include("../loadingPage.html"); ?>
+
 <center>
 	<div id="test">
 	<select name="location" id="location">
 		
 	</select>
-	
+	<button id="loBtn">OK</button>
 	<div >
 		<table id="ta" class="display" style="width:100%">
 			<thead>

@@ -2,7 +2,8 @@
 <?php
 //echo shell_exec('/Users/fei/anaconda3/bin/python --V 2>&1');
 //echo shell_exec('echo $PATH 2>&1');
-$output= shell_exec('python ./python/my_last16Compare.py 2>&1');
+include("../path.php");
+$output= shell_exec("$path2 ./python/my_last16Compare.py 2>&1");
 $output = json_decode(str_replace("'",'"',$output),true);
 
 ?>

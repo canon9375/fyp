@@ -49,15 +49,14 @@ margin-top: 20%;
 
       <a href="./MainPage/mapDisplay.php" class="w3-bar-item w3-button" target="con">Random Forest</a>
       <a href="#" class="w3-bar-item w3-button" target="con">Time Series(ARIMA)</a>
-      <a href="#" class="w3-bar-item w3-button"target="con">ANN</a>
       <a href="#" class="w3-bar-item w3-button"target="con">Mathematic</a>
     </div>
-    <a href="./callAPI/ARIMA.html" class="w3-bar-item w3-button" target="con">Get Data</a>
+    <a href="./callAPI/ARIMA.php" class="w3-bar-item w3-button" target="con">Get Data</a>
 
     <a href="./chart/chart.php" target="con" class="w3-bar-item w3-button">Chart</a>
     <a href="#" class="w3-bar-item w3-button" onClick="show3()">Test Plan<i class="fa fa-caret-down"></i></a>
 	  <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium">
-      <a href="./TestPlan/MLP.html" class="w3-bar-item w3-button" target="con">Random Forest</a>
+      <a href="./TestPlan/rf.html" class="w3-bar-item w3-button" target="con">Random Forest</a>
       <a href="./TestPlan/ARIMAMain.html" class="w3-bar-item w3-button" target="con">Time Series(ARIMA)</a>
       <a href="./TestPlan/MLP.html" class="w3-bar-item w3-button" target="con">Multiple Linear Regression</a>
     </div>

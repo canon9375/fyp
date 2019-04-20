@@ -46,13 +46,15 @@ def genPredict(result):
                 outputData.append([int(i['paqhi'])])
                 aqhi = int(i['paqhi'])
                 t.append(i['paqhi'])
+                t.append(1)
             else:
                 outputData.append([3])
                 t.append(3)
+                t.append(1)
             reData.append(t)
         ANNmodel = MLPClassifier(
                     activation='relu',   #激活函数为relu,类似于s型函数
-                   hidden_layer_sizes=3)  #隐藏层为i
+                   hidden_layer_sizes=200)  #隐藏层为i
         ANNmodel.fit(inputData,outputData)  #训练模型
         with open('500LanLong.json', 'r') as outfile:  
             LanLo100= json.load(outfile)
@@ -62,11 +64,23 @@ def genPredict(result):
         annAqhi = ANNmodel.predict(pInput)
         for i in range (len(LanLo100)):
             LanLo100[i]['center'].append(str(annAqhi[i]))
+            LanLo100[i]['center'].append(2)
             reData.append(LanLo100[i]['center'])
         return reData
 conn=MongoClient('mongodb://admin:admin@cluster0-shard-00-00-9eks9.mongodb.net:27017,cluster0-shard-00-01-9eks9.mongodb.net:27017,cluster0-shard-00-02-9eks9.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true')
 coll3 = conn.fyp.predictData
 perferD={}
+# now
+t =  datetime.datetime.now() 
+fmt = t.strftime('%Y-%m-%d %H')
+time = parse(fmt)
+query = {'dateTime':{"$eq":time}}
+result = coll3.find(query) 
+perferD[fmt]=[]
+if not result.count()>0:
+    query = {'dateTime':{"$eq":parse("2019-04-17 04")}}
+    result = coll3.find(query) 
+perferD[fmt] =genPredict(result)
 # 1
 t =  datetime.datetime.now() + timedelta(hours=1)
 fmt = t.strftime('%Y-%m-%d %H')
@@ -74,6 +88,9 @@ time = parse(fmt)
 query = {'dateTime':{"$eq":time}}
 result = coll3.find(query) 
 perferD[fmt]=[]
+if not result.count()>0:
+    query = {'dateTime':{"$eq":parse("2019-04-17 05")}}
+    result = coll3.find(query) 
 perferD[fmt] =genPredict(result)
 # 2
 t =  datetime.datetime.now() + timedelta(hours=2)
@@ -82,6 +99,9 @@ time = parse(fmt)
 query = {'dateTime':{"$eq":time}}
 result = coll3.find(query) 
 perferD[fmt]=[]
+if not result.count()>0:
+    query = {'dateTime':{"$eq":parse("2019-04-17 06")}}
+    result = coll3.find(query) 
 perferD[fmt] =genPredict(result)
 # 3
 t =  datetime.datetime.now() + timedelta(hours=3)
@@ -90,9 +110,10 @@ time = parse(fmt)
 query = {'dateTime':{"$eq":time}}
 result = coll3.find(query) 
 perferD[fmt]=[]
+if not result.count()>0:
+    query = {'dateTime':{"$eq":parse("2019-04-17 04")}}
+    result = coll3.find(query) 
 perferD[fmt] =genPredict(result)
-
-with open('randomData.json', 'w') as outfile:  
-    json.dump(perferD, outfile)
+print(perferD)
 
     

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="../MainPage/jslib/jquery-1.11.1.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
@@ -68,6 +70,17 @@
         }
     </style>
     <script>
+$("document").ready(function(){
+	$(document).ajaxStart(function(){
+    	$("#wait").css("display", "block");
+		$("#myMain").css("display", "none");
+  	});
+  	$(document).ajaxComplete(function(){
+		$("#wait").css("display", "none");
+		$("#myMain").css("display", "block");
+  	});
+	
+		});
         function myFunction() {
             var copyText = document.getElementById("myInput");
             copyText.select();
@@ -77,25 +90,52 @@
         function change(a) {
             document.getElementById("myInput").value=a;
         }
+function callRandomAjax(){
+	$.ajax({
+       type: 'POST',
+       url: '../MainPage/getData.php',
+		data: {}, 
+		contentType: "application/x-www-form-urlencoded;charset=utf-8",
+       dataType: 'json',
+		success: function(data,status, XMLHttpRequest)
+       {
+		   var box = $("#myInput");
+		   if(JSON.parse(data)){
+			   result = JSON.parse(data);
+				box.text(data);
+		   }else{
+			   box.text(data);
+		   }
+
+	   },
+          error:function(err){
+			 console.log(err);
+          }
+				
+	   });	
+}
     </script>
 </head>
 <body>
+		<?php include("../loadingPage.html"); ?>
+<div id="myMain">
 <center>
   <h1>Choose the method</h1>
 <!--change the json path here-->
 
     <ul class="breadcrumb" >
         <li><span onclick="change('m')">Multiple Linear Regression </span></li>
-        <li > <span onclick="change('T')">Random Forest</span></li>
+        <li > <span onclick="callRandomAjax()">Random Forest & ANN</span></li>
         <li><span onclick="change('random Forest')"> Time Series(ARIMA)</span></li>
-        <li><span onclick="change('ANN')"> ANN</span></li>
         <li><span onclick="change('M')"> mathematic</span></li>
     </ul>
     <textarea rows="20" cols="100" id="myInput">
-[{"method": "MLR", "location": "causewaybay", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}, {"method": "MLR", "location": "central", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}, {"method": "MLR", "location": "central/western", "time": "\"2019-04-08 17:30:00\"", "aqhi": 2}, {"method": "MLR", "location": "eastern", "time": "\"2019-04-08 17:30:00\"", "aqhi": 2}, {"method": "MLR", "location": "kwaichung", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}, {"method": "MLR", "location": "kwuntong", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}, {"method": "MLR", "location": "mongkok", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}, {"method": "MLR", "location": "shamshuipo", "time": "\"2019-04-08 17:30:00\"", "aqhi": 2}, {"method": "MLR", "location": "shatin", "time": "\"2019-04-08 17:30:00\"", "aqhi": 2}, {"method": "MLR", "location": "taipo", "time": "\"2019-04-08 17:30:00\"", "aqhi": 2}, {"method": "MLR", "location": "tapmun", "time": "\"2019-04-08 17:30:00\"", "aqhi": 2}, {"method": "MLR", "location": "tseungkwano", "time": "\"2019-04-08 17:30:00\"", "aqhi": 2}, {"method": "MLR", "location": "tsuenwan", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}, {"method": "MLR", "location": "tuenmun", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}, {"method": "MLR", "location": "tungchung", "time": "\"2019-04-08 17:30:00\"", "aqhi": 2}, {"method": "MLR", "location": "yuenlong", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}]
+
+: "MLR", "location": "tsuenwan", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}, {"method": "MLR", "location": "tuenmun", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}, {"method": "MLR", "location": "tungchung", "time": "\"2019-04-08 17:30:00\"", "aqhi": 2}, {"method": "MLR", "location": "yuenlong", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}]
 </textarea>
     <br>
     <button onclick="myFunction()">Copy text</button>
 </center>
+</div>
 </body>
 </html>
