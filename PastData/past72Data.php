@@ -60,7 +60,7 @@ function callAjax(sdData){
 					t.row.add( [
 						counter ,
 						k,v[0],v[1],v[2],v[3],
-						v[4],v[5],v[6]
+						v[4],v[5],v[6],v[7]
 					]).draw( false );
  					counter++;	
 				});	
@@ -96,6 +96,7 @@ function callAjax(sdData){
                 <th>CO</th>
                 <th>PM10</th>
                 <th>PM25</th>
+					<th>AQHI</th>
             </tr>
         </thead>
 			<tbody>
