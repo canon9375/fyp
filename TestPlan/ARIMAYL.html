@@ -39,7 +39,7 @@
             /*animation: mymove 5s ;*/
             /*animation-delay: 0.5s;*/
             text-align: left;
-            margin-left: 20%;
+
             top: 100px;
             opacity: 0;
             position: relative;
@@ -332,6 +332,7 @@
             });
 
 
+
             $("#testONE").click(function () {
                 $("body,html").scrollTop(1400);
                 $("h2").animate({
@@ -348,7 +349,7 @@
                 },2000);
             });
 
-            $("#testTWO").click(function () {
+            $("#testThree").click(function () {
                 $("body,html").scrollTop(2050);
                 $("h2").animate({
 
@@ -363,6 +364,58 @@
                     opacity:'1'
                 },2000);
             });
+
+
+            $("#testFour").click(function () {
+                $("body,html").scrollTop(2850);
+                $("h2").animate({
+
+                    opacity:'0'
+                }).animate({
+
+                    opacity:'1'
+                },2000);
+
+                $("ol li").animate({
+                    top: '0px',
+                    opacity:'1'
+                },2000);
+            });
+
+
+
+            $("#testFive").click(function () {
+                $("body,html").scrollTop(3550);
+                $("h2").animate({
+
+                    opacity:'0'
+                }).animate({
+
+                    opacity:'1'
+                },2000);
+
+                $("ol li").animate({
+                    top: '0px',
+                    opacity:'1'
+                },2000);
+            });
+
+            $("#testSix").click(function () {
+                $("body,html").scrollTop(4000);
+                $("h2").animate({
+
+                    opacity:'0'
+                }).animate({
+
+                    opacity:'1'
+                },2000);
+
+                $("ol li").animate({
+                    top: '0px',
+                    opacity:'1'
+                },2000);
+            });
+
 
         });
 
@@ -500,15 +553,15 @@
 
                 <ol>
                     <li>The aqhi is related to the past eight hours</li>
-                    <li>Results shows that value of p should be 8</li>
+                    <li>Results shows that value of p is 6</li>
                 </ol>
 
 
                 <table>
                     <tr>
                         <td>
-                            <a target="_blank" href="../photo/TestCase/ARIMA/YL/pValue.png" style="width: 100px">
-                                <img src="../photo/TestCase/ARIMA/YL/pValue.png" alt="" >
+                            <a target="_blank" href="../photo/TestCase/ARIMA/Tap%20Mun/p.png" style="width: 100px">
+                                <img src="../photo/TestCase/ARIMA/Tap%20Mun/p.png" alt="" >
                             </a>
                         </td>
                         <td id="testONE">
@@ -545,8 +598,8 @@
                 <table>
                     <tr>
                         <td>
-                            <a target="_blank" href="../photo/TestCase/ARIMA/YL/table.png" style="width: 100px">
-                                <img src="../photo/TestCase/ARIMA/YL/table.png" alt="" >
+                            <a target="_blank" href="../photo/TestCase/ARIMA/Tap%20Mun" style="width: 100px">
+                                <img src="../photo/TestCase/ARIMA/Tap%20Mun/r.png" alt="" >
                             </a>
                         </td>
                         <td id="testTWO">
@@ -573,8 +626,9 @@
 
                 <ol>
                     <li><span style="color: red;font-size: 25px"><b> q:</b></span>We can set the error rate equal to the difference we observed in the past</li>
-                    <li>The residual errors is low because the distribution is concentrated</li>
-                    <li>Results shows that value of q should be 0</li>
+                    <li>The residual errors is relatively low and concentrate</li>
+                    <li> The results show that indeed there is a bias in the prediction</li>
+                    <li> But we may ignore because it is not series</li>
                     <li>Also known as ARMA model</li>
                 </ol>
 
@@ -582,8 +636,8 @@
                 <table>
                     <tr>
                         <td>
-                            <a target="_blank" href="../photo/TestCase/ARIMA/YL/rvalue.png" style="width: 100px">
-                                <img src="../photo/TestCase/ARIMA/YL/rvalue.png" alt="" >
+                            <a target="_blank" href="../photo/TestCase/ARIMA/Tap%20Mun/r.png" style="width: 100px">
+                                <img src="../photo/TestCase/ARIMA/Tap%20Mun/r.png" alt="" >
                             </a>
                         </td>
 
@@ -594,7 +648,111 @@
 
 
             </div>
+            <div class="withBGC">
+                <hr>
+                <h2 style="font-size: 40px;color: #ff25f1"><i> <span style="color: #fc97ff"> Prediction</span> of one hour later</i> </h2>
 
+                <ol>
+                    <li>
+                        <b>Accuracy: 0.905</b>
+                    </li>
+                    <li>MSE: 0.156</li>
+                    <li>MAE: 0.238</li>
+                </ol>
+
+
+                <table>
+                    <tr>
+                        <td>
+                            <a target="_blank" href="../photo/TestCase/ARIMA/Tap%20Mun/first.png" style="width: 100px">
+                                <img src="../photo/TestCase/ARIMA/Tap%20Mun/first.png" alt="" >
+                            </a>
+                        </td>
+                        <td id="testFour">
+
+
+                            <h2  style="padding-left: 40px;">
+          <span class="symbol">
+          &#10597</span>  </h2>
+                            <br><br>
+                            <h2>   Next Step</h2>
+                        </td>
+                    </tr>
+
+
+                </table>
+
+
+            </div>
+
+            <div class="withoutBGC">
+                <hr>
+                <h2 style="font-size: 40px;color: #ff25f1"><i>Prediction<span style="color: #fc97ff"> of second hour later</span> </i> </h2>
+
+                <ol>
+                    <li>
+                        <b>Accuracy: 0.875</b>
+                    </li>
+                    <li>MSE: 0.173</li>
+                    <li>MAE: 0.305</li>
+                </ol>
+
+
+                <table>
+                    <tr>
+                        <td>
+                            <a target="_blank" href="../photo/TestCase/ARIMA/Tap%20Mun/third.png" style="width: 100px">
+                                <img src="../photo/TestCase/ARIMA/Tap%20Mun/third.png" alt="" >
+                            </a>
+                        </td>
+                        <td id="testFive">
+
+
+                            <h2  style="padding-left: 40px;">
+          <span class="symbol">
+          &#10597</span>  </h2>
+                            <br><br>
+                            <h2>   Next Step</h2>
+                        </td>
+                    </tr>
+
+
+                </table>
+
+
+            </div>
+
+
+
+
+            <div class="withBGC">
+                <hr>
+                <h2 style="font-size: 40px;color: #ff25f1"><i> <span style="color: #fc97ff"> Prediction</span> of three hour later</i> </h2>
+
+                <ol>
+                    <li>
+                        <b>Accuracy: 0.848</b>
+                    </li>
+                    <li>MSE: 0.214</li>
+                    <li>MAE: 0.368</li>
+                </ol>
+
+
+                <table>
+                    <tr>
+                        <td>
+                            <a target="_blank" href="../photo/TestCase/ARIMA/Tap%20Mun/second.png" style="width: 100px">
+                                <img src="../photo/TestCase/ARIMA/Tap%20Mun/second.png" alt="" >
+                            </a>
+                        </td>
+
+                    </tr>
+
+
+                </table>
+
+
+            </div>
 
         </center>
     </div>

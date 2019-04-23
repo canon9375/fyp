@@ -47,9 +47,9 @@ margin-top: 20%;
     </a>
     <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
 
-      <a href="./MainPage/mapDisplay.php" class="w3-bar-item w3-button" target="con">Random Forest</a>
-      <a href="#" class="w3-bar-item w3-button" target="con">Time Series(ARIMA)</a>
-      <a href="#" class="w3-bar-item w3-button"target="con">Mathematic</a>
+      <a href="./MainPage/mapRandom.php" class="w3-bar-item w3-button" target="con">Random Forest</a>
+      <a href="./MainPage/mapArima.php" class="w3-bar-item w3-button" target="con">Time Series(ARIMA)</a>
+      <a href="./MainPage/mapDisplay.php" class="w3-bar-item w3-button"target="con">Multiple Linear Regression</a>
     </div>
     <a href="./callAPI/ARIMA.php" class="w3-bar-item w3-button" target="con">Get Data</a>
 
@@ -58,17 +58,18 @@ margin-top: 20%;
 	  <div id="demoAcc3" class="w3-bar-block w3-hide w3-padding-large w3-medium">
       <a href="./TestPlan/rf.html" class="w3-bar-item w3-button" target="con">Random Forest</a>
       <a href="./TestPlan/ARIMAMain.html" class="w3-bar-item w3-button" target="con">Time Series(ARIMA)</a>
-      <a href="./TestPlan/MLP.html" class="w3-bar-item w3-button" target="con">Multiple Linear Regression</a>
+      <a href="./TestPlan/MLPMain.html" class="w3-bar-item w3-button" target="con">Multiple Linear Regression</a>
     </div>
 
     <a href="#" class="w3-bar-item w3-button" onClick="show2()" >Explaination<i class="fa fa-caret-down"></i></a>
 	<div id="demoAcc2" class="w3-bar-block w3-hide w3-padding-large w3-medium">
       <a href="./Explaination/rf.html" class="w3-bar-item w3-button" target="con">Random Forest</a>
       <a href="./Explaination/ARIMA.html" class="w3-bar-item w3-button" target="con">Time Series(ARIMA)</a>
+        <a href="./Explaination/MLR.html" class="w3-bar-item w3-button" target="con">Multiple Linear Regression</a>
       <a href="./Explaination/math.html" class="w3-bar-item w3-button" target="con">Mathematic</a>
     </div>
     <a href="./PastData/past72Data.php" target="con" class="w3-bar-item w3-button">Past Data</a>
-    <a href="./getAQHI/byGPS.html" class="w3-bar-item w3-button" target="con">Get AQHI</a>
+    <a href="./getAQHI/byGPS.php" class="w3-bar-item w3-button" target="con">Get AQHI</a>
 
 
   </div>

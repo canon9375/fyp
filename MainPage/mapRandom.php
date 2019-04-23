@@ -77,13 +77,13 @@
   <body>
 	 <?php include("../loadingPage.html"); ?>
 	 <div id="myMain">
-		 <h1>Multiple Linear Regression</h1>
+		 <h1>Random Forest and Ann Prediction</h1>
   <br><br><br><br>
 <!--	 button set start-->
 	  <center>
 		  <div class="row">
 		 <div class="container">
-		  <button class="btn btn-group"  id="b0" onClick="b0Show()">Now</button>
+		  <button class="btn btn-group" id="b0" onClick="b0Show()">Now</button>
   		<button class="btn btn-group" id="b1" onClick="b1Show()">T+1</button>
   		<button class="btn btn-group" id="b2" onClick="b2Show()">T+2</button>
   		<button class="btn btn-group" id="b3" onClick="b3Show()">T+3</button>
@@ -204,7 +204,31 @@ function initMap() {
 //	mapMarker();
 	callAjax();
 }
-
+//function mapMarker(){
+//	count = -1;
+//	buC = 0;
+//	$.getJSON(path+modelPath, function(result){
+//		$.each(result, function(i, field){
+//			count =1+count;
+//			buC ++;
+//			id = "map"+count;
+//			bid = "#b"+buC;
+//			$(bid).text(i);
+//			 var map = new google.maps.Map(document.getElementById(id), {
+//				 	zoom: 10.2,
+//          			center: {lat: 22.29552, lng: 114.15769}
+//        		});
+//			 $.each(field, function(i2, field2){
+//				var img = genImg(field2[2]);
+//				var beachMarker = new google.maps.Marker({
+//				  position: {lat: field2[0], lng: field2[1]},
+//				  map: map,
+//				  icon: img
+//				});
+//			});
+//		});
+//  });
+//}
 function genImg(v,lo){
 	var c = document.getElementById("myCanvas");
 	var ctx = c.getContext("2d");
@@ -240,7 +264,7 @@ function genImg(v,lo){
 function callAjax(){
 	$.ajax({
        type: 'POST',
-       url: 'getData.php',
+       url: 'getDataRan.php',
 		data: {}, 
 		contentType: "application/x-www-form-urlencoded;charset=utf-8",
        dataType: 'json',

@@ -77,7 +77,7 @@
   <body>
 	 <?php include("../loadingPage.html"); ?>
 	 <div id="myMain">
-		 <h1>Multiple Linear Regression</h1>
+		 <h1>Arima</h1>
   <br><br><br><br>
 <!--	 button set start-->
 	  <center>
@@ -204,7 +204,31 @@ function initMap() {
 //	mapMarker();
 	callAjax();
 }
-
+//function mapMarker(){
+//	count = -1;
+//	buC = 0;
+//	$.getJSON(path+modelPath, function(result){
+//		$.each(result, function(i, field){
+//			count =1+count;
+//			buC ++;
+//			id = "map"+count;
+//			bid = "#b"+buC;
+//			$(bid).text(i);
+//			 var map = new google.maps.Map(document.getElementById(id), {
+//				 	zoom: 10.2,
+//          			center: {lat: 22.29552, lng: 114.15769}
+//        		});
+//			 $.each(field, function(i2, field2){
+//				var img = genImg(field2[2]);
+//				var beachMarker = new google.maps.Marker({
+//				  position: {lat: field2[0], lng: field2[1]},
+//				  map: map,
+//				  icon: img
+//				});
+//			});
+//		});
+//  });
+//}
 function genImg(v,lo){
 	var c = document.getElementById("myCanvas");
 	var ctx = c.getContext("2d");
@@ -218,14 +242,14 @@ function genImg(v,lo){
 	else if(v==7) {bgcS=2;}
 	else {bgcS=4;}
 	ctx.fillStyle =bgc[bgcS];
-	if(lo==1){
+	if(lo==2){
+		ctx.fillRect(0,0,30,30);
+	}else {
 		ctx.beginPath();
 		ctx.arc(c.width/2,c.height/2,c.height/2,0,2*Math.PI);	
 		ctx.closePath();
 		ctx.stroke();
 		ctx.fill();
-	}else{
-		ctx.fillRect(0,0,30,30);
 	}
 	ctx.fillStyle = "#EFEFF4";
 	ctx.font = "12px Arial";
@@ -240,7 +264,7 @@ function genImg(v,lo){
 function callAjax(){
 	$.ajax({
        type: 'POST',
-       url: 'getData.php',
+       url: 'getArimaData.php',
 		data: {}, 
 		contentType: "application/x-www-form-urlencoded;charset=utf-8",
        dataType: 'json',

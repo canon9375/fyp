@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../MainPage/jslib/jquery-1.11.1.js"></script>
     <script>
+        $(document).ready(function(){
+
+
+            //loading page
+            $(document).ajaxStart(function(){
+                $("#wait").css("display", "block");
+                $("#myMain").css("display", "none");
+            });
+            $(document).ajaxComplete(function(){
+                $("#wait").css("display", "none");
+                $("#myMain").css("display", "block");
+            });
+        });
 
         function cal(x1,y1,x2,y2) {
             var s= (y2-y1)/(x2-x1);
@@ -56,14 +71,65 @@
 
 
             var aqhi=(aqhi2 * distanceRatio) + (aqhi1*(1-distanceRatio));
-
+            // alert(aqhi);
             return aqhi;
         }
+        //
+        // function getcurrentAQHI(location) {
+        //     // location = place
+        //     //get current AQHI
+        //     var result=[];
+        //     var locaList = [['causewaybay', 22.2801379, 114.1829043],
+        //         ['central', 22.2818189, 114.1559413],
+        //         ['central/western', 22.317831, 114.194941],
+        //         ['eastern', 22.2477915, 114.1496074],
+        //         ['kwaichung', 22.3283503, 114.0142057],
+        //         ['kwuntong', 22.3133199, 114.2226423],
+        //         ['mongkok', 22.3226159, 114.1660853],
+        //         ['shamshuipo', 22.3302309, 114.1569233]
+        //         , ['shatin', 22.3762849, 114.1823453],
+        //         ['taipo', 22.4509649, 114.1623843]
+        //         , ['tapmun', 22.4713209, 114.3585323]
+        //         , ['tseungkwano', 22.3261644, 114.1147959]
+        //         , ['tsuenwan', 22.3260131, 114.114796],
+        //         ['tuenmun', 22.4181877, 113.9821814]
+        //         , ['tungchung', 22.2888939, 113.9414723],
+        //         ['yuenlong', 22.4451599, 114.0204623]];
+        //     var aa=callAjax();
+        //     $.each(aa,function(k,f){
+        //         $.each(f,function(k2,f2){
+        //             if(f[k2]==location){
+        //                 result.push(f2[3]);
+        //             }
+        //
+        //         });
+        //
+        //     });
+        //     console.log(result);
+        //     // console.log(aa["2019-04-23 01:30"][0]);
+        //
+        //     return result;
+        // }
 
-        function getcurrentAQHI() {
-            var result=[4,4,5];
-            return result;
-        }
+
+        function getcurrentAQHI(location) {
+
+
+                    var ran;
+                    var x=[];
+                    var c = [2,3,3,3,3,3,2,3,3,4,3,3,3,3,3];
+                    for (var count=0;count<=2;count++){
+
+                        ran=parseInt(Math.random()*(c.length-1));
+                        x.push(c[ran]);
+
+                    }
+                    // alert(x);
+                    return x;
+
+                }
+
+
 
 
         function findOutAQHI(x1,y1) {
@@ -101,19 +167,15 @@
                         var distance2 = distance((locaList[y][1]), (locaList[y][2]), p2[0], p2[1]);
 
                         if (d > (distance1 + distance2)) {
-
                             var distance1Ratio = ratio(distance1, distance2);
                             var locationOne = getcurrentAQHI(locaList[x][0]);
                             var locationTwo = getcurrentAQHI(locaList[y][0]);
-                            // console.log('dis'+locationTwo);
+                            // alert(locationTwo);
                             for (var count = 0; count < 3; count++) {
                                 yy = aqhiOfPoint(locationOne[count], locationTwo[count], distance1Ratio);
-                                // console.log(yy);
-                                aqhi[count]=yy;
 
 
-
-
+                                aqhi[count]=parseInt(yy);
 
                             }
 
@@ -126,15 +188,6 @@
             return aqhi;
         }
 
-
-        function test2() {
-
-        }
-
-        function test() {
-            var  x= findOutAQHI(4,4);
-            console.log(x);
-        }
 
 
     </script>
@@ -157,14 +210,17 @@
             x.innerHTML = "Latitude: " + position.coords.latitude +
                 "<br>Longitude: " + position.coords.longitude;
             var ge= findOutAQHI(position.coords.latitude,position.coords.longitude);
+
             console.log(typeof ge.toString());
             var res = ge.toString().split(",");
+
             var color=["orange","orange","orange"];
             for (var i=0; i<3;i++){
+
                 if (res[i]<4){
                     color[i]="green";
                 }
-                else if (res[i]=7){
+                else if (res[i] == 7){
                     color[i]="red";
                 }
                 else  if (res[i]>=8 && res[i] <= 10){
@@ -176,7 +232,7 @@
 
 
             }
-
+            // alert(res[0]);
             info += "<p style=\"color: "+color[0]+";\">"+ "One Hour Later :" + res[0]+"</p>";
             info +="<p style=\"color: "+color[1]+";\">"+ "Two Hour Later :" + res[1]+"</p>";
             info +="<p style=\"color: "+color[2]+";\">"+ "Three Hour Later :" + res[2]+"</p>";
@@ -195,23 +251,51 @@
 
         function codeAddress() {
             var result;
+            var info="";
+            var res;
             geocoder = new google.maps.Geocoder();
             console.log(geocoder);
-
+            var x = document.getElementById("de");
             var address = document.getElementById('address').value;
             geocoder.geocode( { 'address': address}, function(results, status) {
                 if (status == 'OK') {
 
                     result = results[0].geometry.location.toString();
 
-                    var res = result.split(",");
+                    res = result.split(",");
 
                     var lan=res[0].substring(1,res[0].length);
                     var lon=res[1].substring(1,res[0].length);
 
                     //return  AQHI
-                    var aqhi= findOutAQHI(lan,lon);
-                    alert(aqhi);
+                    var ge= findOutAQHI(lan,lon);
+                    var res = ge.toString().split(",");
+                    var color=["orange","orange","orange"];
+                    for (var i=0; i<3;i++){
+
+                        if (res[i]<4){
+                            color[i]="green";
+                        }
+                        else if (res[i]==7){
+                            color[i]="red";
+                        }
+                        else  if (res[i]>=8 && res[i] <= 10){
+                            color[i]="brown";
+                        }
+                        else if(res[i]>=11){
+                            color[i]="black";
+                        }
+
+
+
+                    }
+                    // alert(res[0]);
+                    info += "<p style=\"color: "+color[0]+";\">"+ "One Hour Later :" + res[0]+"</p>";
+                    info +="<p style=\"color: "+color[1]+";\">"+ "Two Hour Later :" + res[1]+"</p>";
+                    info +="<p style=\"color: "+color[2]+";\">"+ "Three Hour Later :" + res[2]+"</p>";
+
+                    x.innerHTML = info;
+                    // alert(aqhi);
                 } else {
                     alert('Geocode was not successful for the following reason: ' + status);
                 }
@@ -315,6 +399,8 @@
     </style>
 </head>
 <body style="width: 60%; margin-top: 10%; ">
+<?php include_once ("../loadingPage.html"); ?>
+<div id="myMain">
 <center>
 
 
@@ -330,6 +416,7 @@
     <div class="panel">
         <input type="text" id="address" style="height: 40px;width: 70%; font-size: 20px;" placeholder="enter address..">
         <button class="button button5" onclick="codeAddress()">Get AQHI</button>
+        <p id="de"></p>
     </div>
 
     <button class="accordion">Use GPS to get AQHI</button>
@@ -358,5 +445,6 @@
     </script>
 
 </center>
+</div>
 </body>
 </html>

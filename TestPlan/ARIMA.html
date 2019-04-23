@@ -39,11 +39,12 @@
             /*animation: mymove 5s ;*/
             /*animation-delay: 0.5s;*/
             text-align: left;
-            margin-left: 20%;
+
             top: 100px;
             opacity: 0;
             position: relative;
             font-size: 30px;
+
         }
         #head{
             text-align: center;
@@ -81,12 +82,15 @@
         }
 
         .withBGC{
+            /*text-align: left;*/
             height: 700px;
             background-color: rgba(209, 255, 250, 0.89);
         }
         .withoutBGC{
+            /*text-align: left;*/
             height: 700px;
         }
+
 
     </style>
     <script>
@@ -271,6 +275,7 @@
             margin-bottom: 0px;
             top: 0px;
             padding-top: 15px;
+            text-align: left;
         }
 
 
@@ -279,6 +284,7 @@
            margin-top: 5px;
             display: inline;
             font-size: 25px;
+            text-align: left;
 
         }
 
@@ -347,7 +353,7 @@
                 },2000);
             });
 
-            $("#testTWO").click(function () {
+            $("#testThree").click(function () {
                 $("body,html").scrollTop(2050);
                 $("h2").animate({
 
@@ -363,8 +369,61 @@
                 },2000);
             });
 
+
+            $("#testFour").click(function () {
+                $("body,html").scrollTop(2850);
+                $("h2").animate({
+
+                    opacity:'0'
+                }).animate({
+
+                    opacity:'1'
+                },2000);
+
+                $("ol li").animate({
+                    top: '0px',
+                    opacity:'1'
+                },2000);
+            });
+
+
+
+        $("#testFive").click(function () {
+            $("body,html").scrollTop(3550);
+            $("h2").animate({
+
+                opacity:'0'
+            }).animate({
+
+                opacity:'1'
+            },2000);
+
+            $("ol li").animate({
+                top: '0px',
+                opacity:'1'
+            },2000);
         });
 
+            $("#testSix").click(function () {
+                $("body,html").scrollTop(4000);
+                $("h2").animate({
+
+                    opacity:'0'
+                }).animate({
+
+                    opacity:'1'
+                },2000);
+
+                $("ol li").animate({
+                    top: '0px',
+                    opacity:'1'
+                },2000);
+            });
+
+
+
+
+        });
 
 
 
@@ -378,7 +437,7 @@
 <div id="whole" >
 
 
-    <center>
+
 
         <!--method 2-->
         <div class="withBGC">
@@ -539,28 +598,30 @@
 
         </div>
 
+
+
+
             <div class="withBGC">
                 <hr>
-                <h2 style="font-size: 40px;color: #ff25f1"><i> <span style="color: #fc97ff"> SUMMARY</span> of ARIMA Model</i> </h2>
+                <h2 style="font-size: 40px;color: #ff25f1"><i>Find the value of<span style="color: #fc97ff"> q</span> </i> </h2>
 
                 <ol>
-                    <li>Equation: y=m1x1+m2x2+m3x3+m4x4+m5x5+m6x6+C
-                        <br>
-                        In this example : y=(1.0347)x1+(-0.0195)x2+(-0.1243)x3+(-0.0136)x4+(0.0860)x5+(-0.1475)x6+7.0527
-
-                    </li>
-
+                    <li><span style="color: red;font-size: 25px"><b> q:</b></span>We can set the error rate equal to the difference we observed in the past</li>
+                    <li>The residual errors is relatively low and concentrate</li>
+                    <li> The results show that indeed there is a bias in the prediction</li>
+                    <li> But we may ignore because it is not series</li>
+                    <li>Also known as ARMA model</li>
                 </ol>
 
 
                 <table>
                     <tr>
                         <td>
-                            <a target="_blank" href="../photo/TestCase/ARIMA/TWTable.png" style="width: 100px">
-                                <img src="../photo/TestCase/ARIMA/TWTable.png" alt="" >
+                            <a target="_blank" href="../photo/TestCase/ARIMA/rValue.png" style="width: 100px">
+                                <img src="../photo/TestCase/ARIMA/rValue.png" alt="" >
                             </a>
                         </td>
-                        <td id="testTWO">
+                        <td id="testThree">
 
 
                             <h2  style="padding-left: 40px;">
@@ -577,37 +638,111 @@
 
             </div>
 
+    <div class="withoutBGC">
+        <hr>
+        <h2 style="font-size: 40px;color: #ff25f1"><i> <span style="color: #fc97ff"> Prediction</span> of one hour later</i> </h2>
 
-            <div class="withoutBGC">
-                <hr>
-                <h2 style="font-size: 40px;color: #ff25f1"><i>Find the value of<span style="color: #fc97ff"> q</span> </i> </h2>
-
-                <ol>
-                    <li><span style="color: red;font-size: 25px"><b> q:</b></span>We can set the error rate equal to the difference we observed in the past</li>
-                    <li>The residual errors is low because the distribution is concentrated</li>
-                    <li>Results shows that value of q should be 0</li>
-                    <li>Also known as ARMA model</li>
-                </ol>
-
-
-                <table>
-                    <tr>
-                        <td>
-                            <a target="_blank" href="../photo/TestCase/ARIMA/rValue.png" style="width: 100px">
-                                <img src="../photo/TestCase/ARIMA/rValue.png" alt="" >
-                            </a>
-                        </td>
-
-                    </tr>
+        <ol>
+            <li>
+                    <b>Accuracy: 0.905</b>
+            </li>
+            <li>MSE: 0.299</li>
+            <li>MAE: 0.396</li>
+        </ol>
 
 
-                </table>
+        <table>
+            <tr>
+                <td>
+                    <a target="_blank" href="../photo/TestCase/ARIMA/first.png" style="width: 100px">
+                        <img src="../photo/TestCase/ARIMA/first.png" alt="" >
+                    </a>
+                </td>
+                <td id="testFour">
 
 
-            </div>
+                    <h2  style="padding-left: 40px;">
+          <span class="symbol">
+          &#10597</span>  </h2>
+                    <br><br>
+                    <h2>   Next Step</h2>
+                </td>
+            </tr>
 
 
-    </center>
+        </table>
+
+
+    </div>
+
+    <div class="withBGC">
+        <hr>
+        <h2 style="font-size: 40px;color: #ff25f1"><i>Prediction<span style="color: #fc97ff"> of second hour later</span> </i> </h2>
+
+        <ol>
+            <li>
+                <b>Accuracy: 0.873</b>
+            </li>
+            <li>MSE: 0.375</li>
+            <li>MAE: 0.504</li>
+        </ol>
+
+
+        <table>
+            <tr>
+                <td>
+                    <a target="_blank" href="../photo/TestCase/ARIMA/second.png" style="width: 100px">
+                        <img src="../photo/TestCase/ARIMA/second.png" alt="" >
+                    </a>
+                </td>
+                <td id="testFive">
+
+
+                    <h2  style="padding-left: 40px;">
+          <span class="symbol">
+          &#10597</span>  </h2>
+                    <br><br>
+                    <h2>   Next Step</h2>
+                </td>
+            </tr>
+
+
+        </table>
+
+
+    </div>
+
+
 </div>
+
+    <div class="withoutBGC">
+        <hr>
+        <h2 style="font-size: 40px;color: #ff25f1"><i> <span style="color: #fc97ff"> Prediction</span> of three hour later</i> </h2>
+
+        <ol>
+            <li>
+                <b>Accuracy: 0.839</b>
+            </li>
+            <li>MSE: 0.539</li>
+            <li>MAE: 0.621</li>
+        </ol>
+
+
+        <table>
+            <tr>
+                <td>
+                    <a target="_blank" href="../photo/TestCase/ARIMA/three.png" style="width: 100px">
+                        <img src="../photo/TestCase/ARIMA/three.png" alt="" >
+                    </a>
+                </td>
+
+            </tr>
+
+
+        </table>
+
+
+    </div>
+</center>
 </body>
 </html>

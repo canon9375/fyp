@@ -14,7 +14,7 @@ from datetime  import date, timedelta
 import json
 client=MongoClient('mongodb://admin:admin@cluster0-shard-00-00-9eks9.mongodb.net:27017,cluster0-shard-00-01-9eks9.mongodb.net:27017,cluster0-shard-00-02-9eks9.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true')
 db=client.fyp
-data=db.MLR
+data=db.samkiPredictorData
 history=[]
 time=[]
     # now
@@ -28,7 +28,7 @@ def getAQHI(count):
     result=[]
     reData =[]
 #     print(time)
-    t =  datetime.datetime.now() - timedelta(hours=count)
+    t =  datetime.datetime.now() + timedelta(hours=count)
     minu = int(t.strftime('%M'))
 
     if minu<30:
@@ -45,18 +45,18 @@ def getAQHI(count):
         pInput.append(i['center'])
 
     for i in range (len(LanLo100)):
-        myquery = { "location": locaList[i][0]  }
+        myquery = { "location": locaList[i][0] ,"time":time }
         Central = data.find(myquery)
-        result=float(4)
         if Central.count() == 0:
             result=float(4)
         else:
-            couunt=0
             for a in Central:
-                couunt+=1
-                if couunt==(len(a)-count):
-                    result=int(a['aqhi'])
-#                     print(a['time'])
+                result=a['aqhi']
+#         try:
+#             for a in Central:
+
+#         except:
+
         annAqhi =result
         LanLo100[i]['center'].append(str(annAqhi))
         LanLo100[i]['center'].append(1)
@@ -64,7 +64,10 @@ def getAQHI(count):
 #     print(LanLo100[i]['center'])
     return reData
 
-
+# #0
+# perferD[fmt] =getAQHI(0)
+# print(perferD)
+#1
 def getCurrent():
     db=client.fyp
     data=db.currentAQHI
@@ -100,30 +103,22 @@ def getCurrent():
 #     print(LanLo100[i]['center'])
     return reData
 
-# #0
-# perferD[fmt] =getAQHI(0)
-# print(perferD)
-#1
-
 def time(count):
     t =  datetime.datetime.now() + timedelta(hours=count)
     fmt = t.strftime('%Y-%m-%d %H:30')
     return fmt
-
-
 
 #now
 perferD[time(0)] =getCurrent()
 
 # print(perferD)
 #1
-perferD[time(1)] =getAQHI(3)
+perferD[time(1)] =getAQHI(1)
 # print(perferD)
 #2
 perferD[time(2)] =getAQHI(2)
 # print(perferD)
 #3
-perferD[time(3)] =getAQHI(1)
+perferD[time(3)] =getAQHI(3)
 print(perferD)
-
 
