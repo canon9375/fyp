@@ -14,9 +14,9 @@ location = ['Central/western','Eastern','Kwun Tong','Sham Shui Po',
                 'Tuen Mun','Tung Chung','Tai Po','Sha Tin',
                 'Tap Mun','Causeway Bay','Central','Mong Kok']
 reJson = {}
-
+ti = datetime.datetime.now() - timedelta(hours=4)
 for x in location:
-    result = predict.find({"location":x}).sort("dateTime",-1).limit(10)
+    result = predict.find({"location":x,'dateTime':{'$lte':ti}}).sort("dateTime",-1).limit(10)
     reJson[x]=[]
     for a in result: 
         loca = a['location']
