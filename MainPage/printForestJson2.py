@@ -73,7 +73,7 @@ perferD={}
 # now
 t =  datetime.datetime.now() 
 fmt = t.strftime('%Y-%m-%d %H')
-if t.strftime('%M') > 35:
+if t.strftime('%M') > '35':
 	time = parse(fmt)+ timedelta(hours=0.5)
 else:
 	time = parse(fmt)- timedelta(hours=0.5)
