@@ -47,9 +47,9 @@ def getAQHI(count):
     for i in range (len(LanLo100)):
         myquery = { "location": locaList[i][0]  }
         Central = data.find(myquery)
-        result=float(4)
+        result=float(3)
         if Central.count() == 0:
-            result=float(4)
+            result=float(3)
         else:
             couunt=0
             for a in Central:

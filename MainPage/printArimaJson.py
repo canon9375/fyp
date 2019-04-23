@@ -48,7 +48,7 @@ def getAQHI(count):
         myquery = { "location": locaList[i][0] ,"time":time }
         Central = data.find(myquery)
         if Central.count() == 0:
-            result=float(4)
+            result=float(3)
         else:
             for a in Central:
                 result=a['aqhi']

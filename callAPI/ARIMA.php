@@ -91,9 +91,18 @@ $("document").ready(function(){
             document.getElementById("myInput").value=a;
         }
 function callRandomAjax(){
+	callAjax('getDataRan.php');	
+}
+function callmlrAjax(){
+	callAjax('getData.php');	
+}
+function calltimeAjax(){
+	callAjax('getArimaData.php');	
+}
+function callAjax(p2){
 	$.ajax({
        type: 'POST',
-       url: '../MainPage/getData.php',
+       url: '../MainPage/'+p2,
 		data: {}, 
 		contentType: "application/x-www-form-urlencoded;charset=utf-8",
        dataType: 'json',
@@ -124,14 +133,13 @@ function callRandomAjax(){
 <!--change the json path here-->
 
     <ul class="breadcrumb" >
-        <li><span onclick="change('m')">Multiple Linear Regression </span></li>
+        <li><span onclick="callmlrAjax()">Multiple Linear Regression </span></li>
         <li > <span onclick="callRandomAjax()">Random Forest & ANN</span></li>
-        <li><span onclick="change('random Forest')"> Time Series(ARIMA)</span></li>
-        <li><span onclick="change('M')"> mathematic</span></li>
+        <li><span onclick="calltimeAjax()"> Time Series(ARIMA)</span></li>
     </ul>
     <textarea rows="20" cols="100" id="myInput">
 
-: "MLR", "location": "tsuenwan", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}, {"method": "MLR", "location": "tuenmun", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}, {"method": "MLR", "location": "tungchung", "time": "\"2019-04-08 17:30:00\"", "aqhi": 2}, {"method": "MLR", "location": "yuenlong", "time": "\"2019-04-08 17:30:00\"", "aqhi": 3}]
+	select Model
 </textarea>
     <br>
     <button onclick="myFunction()">Copy text</button>
