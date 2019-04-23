@@ -29,8 +29,10 @@ for x in location:
             actAqhi = str(result2['aqhi'].replace(' ',''))
         else:
             actAqhi = '3'
-        reJson[x].append(actAqhi)
-        reJson[x].append(preAqhi)
+        abc = []
+        abc.append(actAqhi)
+        abc.append(preAqhi)
+        reJson[x].append(abc)
 # ret = requests.post("../chart.php",json = reJson)
 print(reJson )
 
