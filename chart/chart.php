@@ -48,8 +48,8 @@ function drawCurveTypes() {
 			<?php
 			foreach($v as $b){
 				?>
-				var acl =parseInt(<?=json_encode($v[0], JSON_HEX_TAG)?>);
-				var pre =parseInt(<?=json_encode($v[1], JSON_HEX_TAG)?>);
+				var acl =parseInt(<?=json_encode($b[0], JSON_HEX_TAG)?>);
+				var pre =parseInt(<?=json_encode($b[1], JSON_HEX_TAG)?>);
 				data.addRows([[count,acl,pre]]);
 				count= count +1;
 				var options = {
